@@ -6,17 +6,26 @@
     @method('PUT')
     @csrf
         <div class="input-group d-flex justify-content-between p-5">
-            <div class="w-25">
+            <div class="w-25 pe-3">
                 <label class="mb-2" for="name">Nome progetto</label>
                 <input type="text" class="form-control" name="name" value="{{old('name', $project->name)}}" id="name">
             </div>
-            <div class="w-25">
+            <div class="w-25 px-3">
                 <label class="mb-2" for="date">Data completamento</label>
                 <input type="date" class="form-control" name="completion_date" value="{{old('completion_date', $project->completion_date)}}" id="date">
             </div>
-            <div class="w-25">
+            <div class="w-25 px-3">
                 <label class="mb-2" for="author">Autore progetto</label>
                 <input type="text" class="form-control" name="author" value="{{old('author', $project->author)}}" id="author">
+            </div>
+            <div class="w-25 ps-3">
+                <label class="mb-2" for="type_id">Tipologia progetto</label>
+                <select type="text" class="form-select" name="type_id" id="type_id">
+                    <option value="">Nessuna tipologia</option>
+                    @foreach ($types as $type)
+                        <option @if ($project->type_id == $type->id) selected @endif value="{{$type->id}}">{{$type->label}}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
         <div class="d-flex justify-content-between pt-0 p-5">
@@ -40,7 +49,7 @@
 <script>
 const fileInput = document.getElementById('image');
 const preview = document.getElementById('preview');
-const placeholder = preview.src
+const placeholder = 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png'
 
 fileInput.addEventListener('change', () => {
     if(fileInput.files && fileInput.files[0]){

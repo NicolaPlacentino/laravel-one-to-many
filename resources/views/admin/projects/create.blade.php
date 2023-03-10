@@ -5,17 +5,26 @@
     <form action="{{route('admin.projects.store')}}" enctype="multipart/form-data" method="POST">
     @csrf
         <div class="input-group d-flex justify-content-between p-5">
-            <div class="w-25">
+            <div class="w-25 pe-3">
                 <label class="mb-2" for="name">Nome progetto</label>
                 <input type="text" class="form-control" name="name" id="name">
             </div>
-            <div class="w-25">
+            <div class="w-25 px-3">
                 <label class="mb-2" for="date">Data completamento</label>
                 <input type="date" class="form-control" name="completion_date" id="date">
             </div>
-            <div class="w-25">
+            <div class="w-25 px-3">
                 <label class="mb-2" for="author">Autore progetto</label>
                 <input type="text" class="form-control" name="author" id="author">
+            </div>
+            <div class="w-25 ps-3">
+                <label class="mb-2" for="type_id">Tipologia progetto</label>
+                <select type="text" class="form-select" name="type_id" id="type_id">
+                    <option value="" selected>Nessuna tipologia</option>
+                    @foreach ($types as $type)
+                        <option value="{{$type->id}}">{{$type->label}}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
         <div class="d-flex justify-content-between pt-0 p-5">
