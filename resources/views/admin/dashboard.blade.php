@@ -31,6 +31,7 @@
                     <th scope="col">Projects</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -38,6 +39,7 @@
                     <tr>
                       <td>{{$project->name}}</td>
                       <td>{{$project->completion_date}}</td>
+                      <td><b class="rounded d-inline-block px-2 p-1 mt-1" style="background-color:{{$project->type?->color}}; color:white">{{$project->type?->label}}</b></td>
                       <td class="text-end">
                         <a href="{{route('admin.projects.show', $project->id)}}" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
                         <a href="{{route('admin.projects.edit', $project->id)}}" class="btn btn-secondary"><i class="fa-solid fa-pen-to-square"></i></a>

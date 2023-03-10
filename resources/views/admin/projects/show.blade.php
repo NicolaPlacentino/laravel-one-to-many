@@ -15,6 +15,11 @@
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item"><b>Data di completamento:</b><br>{{$project->completion_date}}</li>
                     <li class="list-group-item"><b>Autore:</b><br>{{$project->author}}</li>
+                    @if ($project->type)
+                    <li class="list-group-item"><b>Tipologia:</b><br>
+                      <b class="rounded d-inline-block px-2 p-1 mt-1" style="background-color:{{$project->type->color}}; color:white">{{$project->type->label}}</b>
+                    </li>
+                    @endif
                   </ul>
                 </div>
                 @if ($project->image)
